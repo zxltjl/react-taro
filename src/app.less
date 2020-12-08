@@ -1,0 +1,70 @@
+page {
+    --app-tab-height: 108px;
+
+    --app-color-blue: #19aeff;
+    --app-btn-color-blue: linear-gradient(90deg, #53eff6, #417ff1);
+
+    --app-color-orange: #fea32a;
+    --app-btn-color-orange: linear-gradient(90deg, #fecb40, #fe871b);
+
+    height: 100%;
+    font-size: 28px;
+    background-color: #f7f9ff;
+    color: #333;
+    font-family: Helvetica Neue, Helvetica, sans-serif;
+}
+
+view, scroll-view, swiper, button, input, textarea, label, navigator, image, cover-image {
+    box-sizing: border-box;
+}
+
+switch, checkbox, radio {
+    position: relative;
+}
+
+image {
+    position: relative;
+    display: inline-block;
+    z-index: 0;
+    max-width: 100%;
+}
+
+cover-image {
+    display: inline-block;
+    max-width: 100%;
+}
+
+button {
+    position: relative;
+    outline: none;
+
+    &.blue {
+        background: var(--app-btn-color-blue);
+    }
+
+    &.orange {
+        background: var(--app-btn-color-orange);
+    }
+
+    &.app-btn-big {
+        min-width: 340px;
+        line-height: 84px;
+        border-radius: 42px;
+        font-size: 32px;
+        color: white;
+    }
+
+    &.app-btn {
+        min-width: 120px;
+        line-height: 52px;
+        border-radius: 26px;
+        font-size: 26px;
+        color: white;
+    }
+
+    &.app-btn-loading {
+        background: #eaeaea;
+        box-shadow: none;
+        color: #b7b7b7;
+    }
+}

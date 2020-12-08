@@ -1,0 +1,42 @@
+.list {
+    .list-item {
+        height: 112px;
+
+        > view, image {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        &-image {
+            width: 72px;
+            height: 72px;
+            margin-right: 16px;
+        }
+
+        &-title {
+            font-size: 30px;
+            color: #1a1a1a;
+        }
+
+        &-extra {
+            font-size: 22px;
+            color: #b7b7b7;
+        }
+
+        &-gift {
+            float: right;
+            margin: 30px 0;
+        }
+    }
+
+    .list-item + .list-item {
+        border-top: 2px solid #eaeaea;
+    }
+
+    .list-item::before {
+        content: '';
+        vertical-align: middle;
+        display: inline-block;
+        height: 100%;
+    }
+}

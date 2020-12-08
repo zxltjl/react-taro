@@ -1,0 +1,25 @@
+module.exports = {
+    root: true,
+    parser: '@typescript-eslint/parser',
+    plugins: ['@typescript-eslint'],
+    extends: ['taro'],
+    rules: {
+        'indent': ['warn', 4],
+        // 使用 @typescript-eslint/no-unused-vars 校验
+        'no-unused-vars': 'off',
+        'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx', '.tsx'] }],
+        'guard-for-in': 'error',
+        'eqeqeq': ['error', 'always', { 'null': 'ignore' }],
+        'quotes': ['error', 'single'],
+        'no-useless-escape': 'error',
+        'object-curly-spacing': ['warn', 'always'],
+        'no-redeclare': 'off',
+        'import/no-commonjs': 'off',
+        'ordered-imports': 'off',
+        'import/first': 'off',
+        'import/prefer-default-export': 'off',
+        '@typescript-eslint/no-unused-vars': ['error', { 'varsIgnorePattern': 'Taro' }],
+        'react/jsx-indent-props': ['warn', 4],
+        'jsx-quotes': ['error', 'prefer-single'],
+    },
+};

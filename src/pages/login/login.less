@@ -1,0 +1,61 @@
+.login {
+    height: 100vh;
+    overflow: hidden;
+    background: white;
+
+    &-bg-top {
+        position: absolute;
+        width: 1400px;
+        height: 1400px;
+        top: -820px;
+        left: -180px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #0081ff, #1cbbb4);
+    }
+
+    &-logo {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 196px;
+        margin: 0 auto;
+        height: 220px;
+    }
+
+    &-form {
+        position: relative;
+        top: 560px;
+        .form-input {
+            position: relative;
+            margin: 48px 78px;
+            > input {
+                height: 80px;
+                padding-left: 48px;
+                border-bottom: 2px solid #eaeaea;
+                font-size: 36px;
+            }
+
+            .placeholder {
+                font-size: 30px;
+            }
+
+            > image {
+                position: absolute;
+                width: 30px;
+                height: 38px;
+                bottom: 22px;
+            }
+        }
+
+        .form-errors {
+            position: absolute;
+            left: 48px;
+            color: #f5222d;
+        }
+
+        .form-submit {
+            margin-top: 56px;
+            width: 452px;
+        }
+    }
+}

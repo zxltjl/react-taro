@@ -4,7 +4,7 @@ import { Provider } from '@tarojs/mobx';
 import Login from '@/pages/login/login';
 
 import appStore, { IUserInfo } from './store/app';
-
+import { Button, Text} from '@tarojs/components';
 import service from '@/libs/service';
 import { refresh } from '@/api/user';
 import './app.less';
@@ -31,27 +31,44 @@ class App extends Component {
             navigationStyle: 'default',
             navigationBarBackgroundColor: '#f7f9ff',
             navigationBarTextStyle: 'black'
-        }
+        },
+        permission: {
+            "scope.userLocation": {
+              "desc": "你的位置信息将用于提供更优质的服务"
+            },
+            "scope.userInfo": {
+                "desc": "das"
+              }
+          },
     };
 
     componentWillMount() {
-        Promise.all([
-            Taro.checkSession(),
-        ])
-            .then(values => {
-                service.setToken((values[1] as any).data);
-                appStore.setUserInfo((values[2] as any).data as IUserInfo);
-                // this.refreshStatus();
-                Taro.navigateTo({
-                    url:'pages/home/home'
-                })
-            })
+        console.log(Taro.canIUse('button.open-type.getUserInfo'))
+        //   Taro.login({
+        //     success: function (res) {
+        //       if (res.code) {
+        //         console.log(res)
+        //       } else {
+        //         console.log('登录失败！' + res.errMsg)
+        //       }
+        //     }
+        //   })
+        // Promise.all([
+        //     Taro.checkSession(),
+        // ])
+        //     .then(values => {
+        //         service.setToken((values[1] as any).data);
+        //         appStore.setUserInfo((values[2] as any).data as IUserInfo);
+        //         // this.refreshStatus();
+        //         Taro.navigateTo({
+        //             url:'pages/home/home'
+        //         })
+        //     })
     }
 
     refreshStatus() {
         Taro.checkSession().catch(() => Taro.login().then(refresh));
     }
-
     // 在 App 类中的 render() 函数没有实际作用
     // 请勿修改此函数
     render() {

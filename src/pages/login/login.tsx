@@ -11,9 +11,6 @@ import validate, { validateAll } from '@/libs/validate';
 import service from '@/libs/service';
 import { login } from '@/api/user';
 
-import logo from '@/assets/img/logo_swan.png';
-import iconLock from '@/assets/img/icon_lock.png';
-import iconPhone from '@/assets/img/icon_phone.png';
 import './login.less';
 
 interface IProps {
@@ -60,6 +57,23 @@ class Login extends Component<IProps, IState> {
     };
 
     componentDidMount() {
+        Taro.getSetting({
+            success(res) {
+                console.log(res)
+              if (!res.authSetting['scope.userInfo']) { 
+                Taro.authorize({
+                  scope: 'scope.userInfo',  
+                  success(res) {
+                       console.log(res)
+                  },
+                  fail() {
+                    // 用户点击不允许引导重新获取授权
+                    console.log(2222)
+                  }
+                })
+              }
+            }
+        });
         this.submit = throttle(this.submit, 200, true);
     }
     private validate = validate<string>(Login.decorators, 'errors');
@@ -130,7 +144,10 @@ class Login extends Component<IProps, IState> {
             });
         }
     }
-
+    
+    tobegin = (res)=>{
+        console.log(res)
+    }
     render() {
         const { focusPwd, loading, errors } = this.state;
 
@@ -148,7 +165,6 @@ class Login extends Component<IProps, IState> {
                             placeholder-class='placeholder'
                             placeholder='请输入账号'
                         />
-                        <Image src={iconPhone} mode='aspectFit' />
                         <View className='form-errors'>{errors.username}</View>
                     </View>
                     <View className='form-input'>
@@ -161,16 +177,16 @@ class Login extends Component<IProps, IState> {
                             placeholder-class='placeholder'
                             placeholder='请输入密码'
                         />
-                        <Image src={iconLock} mode='aspectFit' />
                         <View className='form-errors'>{errors.password}</View>
                     </View>
 
+                    
                     <Button
-                        loading={loading}
-                        formType='submit'
-                        className={`form-submit app-btn-big blue ${loading && 'app-btn-loading'}`}
+                        type="primary"
+                        open-type="getUserInfo"
+                        onGetUserInfo={this.tobegin}
                     >
-                        <Text>登录</Text>
+                        <Text>授权</Text>
                     </Button>
                 </Form>
             </View>
